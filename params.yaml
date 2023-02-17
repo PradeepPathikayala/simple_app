@@ -4,7 +4,7 @@ base :
   target_col: TARGET
 
 data_soucre:
-  s3_source: data_given/winequaltiy.csv
+  s3_source: data_given/winequality.csv
 
 split_data:
   train_path : data/processed/train_winequality.csv
