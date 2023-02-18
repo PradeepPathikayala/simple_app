@@ -22,3 +22,7 @@ git rm -r --cached .   # to remove all the cache
 git remote add origin https://github.com/PradeepPathikayala/simple_app.git
 
 git branch -M main
+
+
+dvc mertics show
+dvc mertics diff
