@@ -26,3 +26,17 @@ git branch -M main
 
 dvc mertics show
 dvc mertics diff
+
+tox commands:
+tox init
+tox -r # for rebuilidng
+
+pytest command:
+pytest -v
+
+setup command:
+pip install `e .
+
+build your own package comman:
+python setup.py sdist bdist wheel
+
