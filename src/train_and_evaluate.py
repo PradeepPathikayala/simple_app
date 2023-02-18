@@ -13,16 +13,18 @@ import argparse
 import joblib
 import json
 
+
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
     mae = mean_absolute_error(actual, pred)
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+
 def train_and_evaluate(config_path):
     config = read_params(config_path)
     test_data_path = config['split_data']['test_path']
-    train_data_path =config['split_data']['train_path']
+    train_data_path = config['split_data']['train_path']
     random_state = config['base']['random_state']
     model_dir = config['model_dir']
 
@@ -41,9 +43,9 @@ def train_and_evaluate(config_path):
     test_x = test.drop(target, axis=1)
 
     lr = ElasticNet(alpha=alpha,
-                     l1_ratio=l1_ration, 
-                     random_state=42)
-    
+                    l1_ratio=l1_ration,
+                    random_state=42)
+
     lr.fit(train_x, train_y)
     predicted_qualities = lr.predict(test_x)
 
@@ -73,9 +75,9 @@ def train_and_evaluate(config_path):
     joblib.dump(lr, model_path)
 ###########################################################################
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     args = argparse.ArgumentParser()
     args.add_argument('--config', default='params.yaml')
     parsed_args = args.parse_args()
     train_and_evaluate(config_path=parsed_args.config)
-
